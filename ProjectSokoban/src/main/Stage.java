@@ -8,7 +8,7 @@ public class Stage {
     private int col; // 스테이지 세로크기
     private int hallNum; // 구멍의 수
     private int ballNum; // 공의 개수
-    private int[] playerCoordinate; // 플레이어 위치
+    private int[] playerCoordinate; // 플레이어 위치 // [0]이 y축 - 몇 행 [1]이 x축 - 몇 열
 
     // 생성자
     private Stage(ArrayList<ArrayList<Integer>> map, int row, int col, int hallNum, int ballNum, int[] playerCoordinate) {
@@ -87,8 +87,8 @@ public class Stage {
                         ballNum++;
                         break;
                     case 3:
-                        playerX = j + 1;
-                        playerY = i + 1;
+                        playerX = j + 1; // 헹
+                        playerY = i + 1; // 열
                         break;
                     default:
                         break;
@@ -96,7 +96,7 @@ public class Stage {
             }
         }
 
-        return new int[]{row, col, hallNum, ballNum, playerX, playerY};
+        return new int[]{row, col, hallNum, ballNum, playerY, playerX};
     }
 
     // Integer로 변환된 스테이지의 맵 정보를 추출할 수 있음
@@ -115,8 +115,24 @@ public class Stage {
         return sb.toString();
     }
 
+    // 숫자 데이터로 된 맵 정보
     public ArrayList<ArrayList<Integer>> getMap() {
         return map;
+    }
+
+    // 문자열 데이터로 된 맵 정보
+    public String getMapWithString(){
+        StringBuilder sb = new StringBuilder();
+
+        for(ArrayList<Integer> oneLine : map){
+            for(Integer integer : oneLine){
+                sb.append(Obstacle.toStr(integer));
+            }
+
+            sb.append("\n");
+        }
+
+        return sb.toString();
     }
 
     public int getRow() {
