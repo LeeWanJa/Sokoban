@@ -26,4 +26,14 @@ public enum Obstacle {
         // 정의되지 않은 입력은 무시
         return -1;
     }
+
+    // 정수가 들어오면 대응되는 문자열 반환
+    public static String toString(int input){
+        for(Obstacle o : Obstacle.values()){
+            if(o.obstacleCode == input)
+                return o.inputObstacle;
+        }
+
+        return "";
+    }
 }

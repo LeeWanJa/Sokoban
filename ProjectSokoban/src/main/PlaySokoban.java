@@ -15,8 +15,4 @@ public class PlaySokoban {
         // 데이터 출력
 
     }
-
-    public String getStageInfo(){
-        return stageInfo;
-    }
 }
