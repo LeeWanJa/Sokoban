@@ -12,7 +12,7 @@ public enum Obstacle {
     private final int obstacleCode;
 
     Obstacle(String inputObstacle, int obstacleCode) {
-        this.inputObstacle = intputObstacle;
+        this.inputObstacle = inputObstacle;
         this.obstacleCode = obstacleCode;
     }
 
