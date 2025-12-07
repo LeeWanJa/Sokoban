@@ -34,4 +34,8 @@ public class StageSet {
 
         return sb.toString();
     }
+
+    public ArrayList<Stage> getStages() {
+        return stages;
+    }
 }

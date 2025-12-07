@@ -114,4 +114,28 @@ public class Stage {
 
         return sb.toString();
     }
+
+    public ArrayList<ArrayList<Integer>> getMap() {
+        return map;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public int getHallNum() {
+        return hallNum;
+    }
+
+    public int getBallNum() {
+        return ballNum;
+    }
+
+    public int[] getPlayerCoordinate() {
+        return playerCoordinate;
+    }
 }
