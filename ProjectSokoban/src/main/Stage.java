@@ -6,14 +6,16 @@ public class Stage {
     private ArrayList<ArrayList<Integer>> map = new ArrayList<>(); // 스테이지 데이터 String -> Integer 변환
     private int row; // 스테이지 가로크기
     private int col; // 스테이지 세로크기
+    private int hallNum; // 구멍의 수
     private int ballNum; // 공의 개수
     private int[] playerCoordinate; // 플레이어 위치
 
     // 생성자
-    private Stage(ArrayList<ArrayList<Integer>> map, int row, int col, int ballNum,  int[] playerCoordinate) {
+    private Stage(ArrayList<ArrayList<Integer>> map, int row, int col, int hallNum, int ballNum, int[] playerCoordinate) {
         this.map = map;
         this.row = row;
         this.col = col;
+        this.hallNum = hallNum;
         this.ballNum = ballNum;
         this.playerCoordinate = playerCoordinate;
     }
@@ -21,13 +23,17 @@ public class Stage {
     // 해당 메서드에서 생성자 반환(정적 팩토리 메서드 패턴)
     public static Stage returnRefinedStage(String stageInfoOrigin){
         String[] stageInfoArr = stageInfoOrigin.split("\n");
-        ArrayList<ArrayList<Integer>> list = refineIntStage(stageInfoArr); // 문자열로된 맵 -> 정수로 정제한 맵
+        ArrayList<ArrayList<Integer>> list = extractMapInfo(stageInfoArr); // 문자열로된 맵 -> 정수로 정제한 맵
 
-        return new Stage(list, 1, 1, 1, new int[2]); // 임시
+        // 나머지 정보 추출 - row/col/hallNum/ballNum/playerCoordinate
+        int[] info = extractRemainInfo(list);
+        int[] newCoord = {info[4], info[5]};
+
+        return new Stage(list, info[0], info[1], info[2], info[3], newCoord); // 임시
     }
 
     // String 스테이지 데이터를 정수 데이터로 변환 -> list에 반환
-    private static ArrayList<ArrayList<Integer>> refineIntStage(String[] stageInfoArr){
+    private static ArrayList<ArrayList<Integer>> extractMapInfo(String[] stageInfoArr){
         ArrayList<ArrayList<Integer>> resultIntStage = new ArrayList<>();
 
         for (String s : stageInfoArr) {
@@ -53,5 +59,59 @@ public class Stage {
         }
 
         return resultIntStage;
+    }
+
+    // map을 제외한 나머지 정보 추출
+    private static int[] extractRemainInfo(ArrayList<ArrayList<Integer>> list) {
+        int row = list.size();
+        int col = 0; // 가장 길이가 긴 요소의 size
+        int hallNum = 0; // 1
+        int ballNum = 0; // 2
+        int playerX = 0;
+        int playerY = 0;
+
+        for(int i = 0; i < list.size(); i++) {
+            ArrayList<Integer> oneLine = list.get(i);
+            col = Math.max(oneLine.size(), row);
+
+            for(int j =  0; j < oneLine.size(); j++) {
+                int intData =  oneLine.get(j);
+                if(intData == -1 || intData == 0 || intData == 4)
+                    continue;
+
+                switch (intData) {
+                    case 1:
+                        hallNum++;
+                        break;
+                    case 2:
+                        ballNum++;
+                        break;
+                    case 3:
+                        playerX = j + 1;
+                        playerY = i + 1;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        return new int[]{row, col, hallNum, ballNum, playerX, playerY};
+    }
+
+    // Integer로 변환된 스테이지의 맵 정보를 추출할 수 있음
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for(ArrayList<Integer> oneLine : map){
+            for(Integer integer : oneLine){
+                sb.append(integer);
+            }
+
+            sb.append("\n");
+        }
+
+        return sb.toString();
     }
 }
