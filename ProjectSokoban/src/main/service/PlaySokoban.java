@@ -1,4 +1,7 @@
-package main;
+package main.service;
+
+import main.domain.StageSet;
+import main.view.printStageSet;
 
 public class PlaySokoban {
     private final String stageInfo;

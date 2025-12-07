@@ -1,4 +1,4 @@
-package main;
+package main.domain;
 
 public enum Obstacle {
     // 장애물 종류 (문자열, 정수) 쌍으로 상수 정의

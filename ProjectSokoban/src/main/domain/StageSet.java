@@ -1,8 +1,8 @@
-package main;
+package main.domain;
 
 import java.util.ArrayList;
 
-import static main.Stage.returnRefinedStage;
+import static main.domain.Stage.returnRefinedStage;
 
 public class StageSet {
     private ArrayList<Stage> stages;

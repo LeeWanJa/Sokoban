@@ -1,4 +1,7 @@
-package main;
+package main.view;
+
+import main.domain.Stage;
+import main.domain.StageSet;
 
 import java.util.ArrayList;
 

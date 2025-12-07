@@ -1,7 +1,7 @@
 package test;
 
 import java.util.*;
-import main.Obstacle;
+import main.domain.Obstacle;
 import org.junit.Test;
 
 
