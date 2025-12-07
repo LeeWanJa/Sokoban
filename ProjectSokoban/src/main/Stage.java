@@ -27,9 +27,9 @@ public class Stage {
 
         // 나머지 정보 추출 - row/col/hallNum/ballNum/playerCoordinate
         int[] info = extractRemainInfo(list);
-        int[] newCoord = {info[4], info[5]};
+        int[] newCoordinate = {info[4], info[5]};
 
-        return new Stage(list, info[0], info[1], info[2], info[3], newCoord); // 임시
+        return new Stage(list, info[0], info[1], info[2], info[3], newCoordinate); // 임시
     }
 
     // String 스테이지 데이터를 정수 데이터로 변환 -> list에 반환

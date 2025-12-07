@@ -9,7 +9,8 @@ public class PlaySokoban {
 
     public void run(){
         // 각 스테이지 별로 데이터 변환
-        RefineStage.createRefineStages(stageInfo);
+        StageSet stageSet = StageSet.createRefineStages(stageInfo);
+        System.out.println(stageSet.toString());
 
         // 데이터 출력
 
