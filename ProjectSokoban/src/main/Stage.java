@@ -7,7 +7,7 @@ public class Stage {
         this.map = map;
     }
 
-//    public static Stage returnRefinedStage(String stageInfoOrigin){
-//        return new int[1][1];
-//    }
+    public static Stage returnRefinedStage(String stageInfoOrigin){
+        return new int[1][1];
+    }
 }

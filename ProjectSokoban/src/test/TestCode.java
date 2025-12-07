@@ -10,10 +10,13 @@ import static main.Main.STAGE_INFO;
 public class TestCode {
 
     @Test
-    public void DivideStage(){
+    public void returnRefinedStageTest(){
+
+
         String[] strArr = STAGE_INFO.split("=====");
 
-        for(String stage : strArr)
-            System.out.println(stage);
+        for(String stage : strArr){
+
+        }
     }
 }

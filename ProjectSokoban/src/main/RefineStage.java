@@ -12,9 +12,9 @@ public class RefineStage {
 
 //    public static RefineStage createRefineStages(String stageInfo) {
 //        String[] stageArr = stageInfo.split("=====");
-//        ArrayList<Stage> newStages = new ArrayList<>();
+//        ArrayList<Stage> refineStages = new ArrayList<>();
 //
-//        for(String stage : stageArr){
+//        for(String refineStages : stageArr){
 //            newStages.add(Stage.returnRefinedStage(stage));
 //        }
 //    }
